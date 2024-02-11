@@ -9,38 +9,16 @@ use std::io::Write;
 use tokenizers::Tokenizer;
 
 use candle::quantized::{ggml_file, gguf_file};
-use candle::{Device, Result, Tensor};
+use candle::{Result, Tensor};
 use candle_transformers::generation::LogitsProcessor;
 
 use candle_transformers::models::quantized_llama as model;
 use model::ModelWeights;
 
+mod utils;
+use crate::utils::device;
+
 const DEFAULT_PROMPT: &str = "My favorite theorem is ";
-
-use candle::utils::{cuda_is_available, metal_is_available};
-
-pub fn device(cpu: bool) -> Result<Device> {
-    if cpu {
-        Ok(Device::Cpu)
-    } else if cuda_is_available() {
-        Ok(Device::new_cuda(0)?)
-    } else if metal_is_available() {
-        Ok(Device::new_metal(0)?)
-    } else {
-        #[cfg(all(target_os = "macos", target_arch = "aarch64"))]
-        {
-            println!(
-                "Running on CPU, to run on GPU(metal), build this example with `--features metal`"
-            );
-        }
-        #[cfg(not(all(target_os = "macos", target_arch = "aarch64")))]
-        {
-            println!("Running on CPU, to run on GPU, build this example with `--features cuda`");
-        }
-        Ok(Device::Cpu)
-    }
-}
-
 
 /// This is a wrapper around a tokenizer to ensure that tokens can be returned to the user in a
 /// streaming way rather than having to wait for the full decoding.
