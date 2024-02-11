@@ -1,0 +1,25 @@
+[package]
+name = "fast-llm"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+accelerate-src = { version = "0.3.2", optional = true }
+anyhow = "1.0.79"
+candle = { git = "https://github.com/huggingface/candle.git", version = "0.4.0", features = ["metal"], package = "candle-core" }
+candle-examples = "0.3.2"
+candle-nn = "0.3.3"
+candle-transformers = "0.3.3"
+clap = "4.5.0"
+hf-hub = "0.3.2"
+intel-mkl-src = { version = "0.8.1", optional = true }
+safetensors = "0.4.2"
+tokenizers = "0.15.1"
+tracing-chrome = "0.7.1"
+tracing-subscriber = "0.3.18"
+
+[features]
+default = []
+accelerate = ["dep:accelerate-src", "candle/accelerate", "candle-nn/accelerate", "candle-transformers/accelerate"]
+mkl = ["dep:intel-mkl-src", "candle/mkl", "candle-nn/mkl", "candle-transformers/mkl"]
+metal = ["candle/metal", "candle-nn/metal"]
