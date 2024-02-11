@@ -7,9 +7,9 @@ edition = "2021"
 accelerate-src = { version = "0.3.2", optional = true }
 anyhow = "1.0.79"
 candle = { git = "https://github.com/huggingface/candle", package = "candle-core" }
-# candle-examples = "0.3.2"
 candle-nn = { git = "https://github.com/huggingface/candle" }
 candle-transformers = { git = "https://github.com/huggingface/candle" }
+candle-metal-kernels = { git = "https://github.com/huggingface/candle" }
 clap = { version = "4.2.4", features = ["derive"] }
 hf-hub = { version = "0.3.2", features = ["tokio"] }
 intel-mkl-src = { version = "0.8.1", optional = true }
