@@ -226,7 +226,7 @@ struct Args {
     /// Enable tracing (generates a trace-timestamp.json file).
     #[arg(long)]
     tracing: bool,
-    
+
     /// Group-Query Attention, use 8 for the 70B version of LLaMAv2.
     #[arg(long)]
     gqa: Option<usize>,
