@@ -187,7 +187,7 @@ struct Args {
     prompt: Option<String>,
 
     /// The length of the sample to generate (in tokens).
-    #[arg(short = 'n', long, default_value_t = 1000)]
+    #[arg(short = 'n', long, default_value_t = 100)]
     sample_len: usize,
 
     /// The tokenizer config in json format.
@@ -223,7 +223,7 @@ struct Args {
     repeat_last_n: usize,
 
     /// The model size to use.
-    #[arg(long, default_value = "7b")]
+    #[arg(long, default_value = "7b-mistral-instruct-v0.2")]
     which: Which,
 
     /// Group-Query Attention, use 8 for the 70B version of LLaMAv2.
