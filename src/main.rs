@@ -176,7 +176,12 @@ impl Which {
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
+    /// The model to use, will be downloaded from the Hugging Face Hub and cached.
+    #[arg(long, default_value = "7b-mistral-instruct-v0.2")]
+    which: Which,
+    
     /// Local GGML/GGUF file to load, typically a .bin/.gguf file.
+    /// To use one of the predefined models, use the --which option instead.
     #[arg(long)]
     model: Option<String>,
 
@@ -190,7 +195,7 @@ struct Args {
     #[arg(short = 'n', long, default_value_t = 100)]
     sample_len: usize,
 
-    /// The tokenizer config in json format.
+    /// Custom tokenizer config in json format, if you need it.
     #[arg(long)]
     tokenizer: Option<String>,
 
@@ -206,10 +211,6 @@ struct Args {
     #[arg(long, default_value_t = 299792458)]
     seed: u64,
 
-    /// Enable tracing (generates a trace-timestamp.json file).
-    #[arg(long)]
-    tracing: bool,
-
     /// Display the token for the specified prompt.
     #[arg(long)]
     verbose_prompt: bool,
@@ -222,9 +223,9 @@ struct Args {
     #[arg(long, default_value_t = 64)]
     repeat_last_n: usize,
 
-    /// The model size to use.
-    #[arg(long, default_value = "7b-mistral-instruct-v0.2")]
-    which: Which,
+    /// Enable tracing (generates a trace-timestamp.json file).
+    #[arg(long)]
+    tracing: bool,
 
     /// Group-Query Attention, use 8 for the 70B version of LLaMAv2.
     #[arg(long)]
