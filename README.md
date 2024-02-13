@@ -16,7 +16,7 @@ Step 1: `git clone https://github.com/Vaibhavs10/fast-llm.rs/`
 
 Step 2: `cd fast-llm.rs`
 
-Step 3: `cargo run --features metal --release -- --which 7b-chat --prompt "What is the meaning of life according to a dog?" --sample-len 100`
+Step 3: `cargo run --features metal --release -- --which 7b-mistral-instruct-v0.2 --prompt "What is the meaning of life according to a dog?" --sample-len 100`
 
 Note: you can remove the `--features metal` to run inference on CPU.
 
@@ -49,4 +49,4 @@ By default, `fast-llm` sends your prompt to the LLM, prints the response and qui
 
 * `cargo run --release -- --prompt interactive`. Runs in interactive mode. You can ask multiple independent queries, previous context is not retained.
 
-* `cargo run --release -- --prompt chat`. Runs in chat mode. Carries conversation history, just like when using ChatGPT or [HuggingChat](https://huggingface.co/chat/). In this mode you'll get best results with one of the _Instruct_ versions of the models, Zephyr, or OpenChat, as all these models are designed for chat.
+* `cargo run --release -- --prompt chat`. Runs in chat mode. Carries conversation history, just like when using ChatGPT or [HuggingChat](https://huggingface.co/chat/). In this mode you'll get best results with one of the _Instruct_ versions of the models, Mistral, Zephyr, or OpenChat, as all these models are designed for chat.
