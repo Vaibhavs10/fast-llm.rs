@@ -1,5 +1,5 @@
-use candle::{Device, Result};
 use candle::utils::{cuda_is_available, metal_is_available};
+use candle::{Device, Result};
 
 pub fn device(cpu: bool) -> Result<Device> {
     if cpu {
@@ -88,5 +88,4 @@ impl TokenOutputStream {
     pub fn tokenizer(&self) -> &tokenizers::Tokenizer {
         &self.tokenizer
     }
-
 }

@@ -179,7 +179,7 @@ struct Args {
     /// The model to use, will be downloaded from the Hugging Face Hub and cached.
     #[arg(long, default_value = "7b-mistral-instruct-v0.2")]
     which: Which,
-    
+
     /// Local GGML/GGUF file to load, typically a .bin/.gguf file.
     /// To use one of the predefined models, use the --which option instead.
     #[arg(long)]
