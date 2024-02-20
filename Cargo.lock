@@ -677,7 +677,6 @@ dependencies = [
  "clap",
  "hf-hub",
  "intel-mkl-src",
- "metal",
  "safetensors",
  "serde",
  "serde_json",
