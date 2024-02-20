@@ -672,7 +672,6 @@ dependencies = [
  "accelerate-src",
  "anyhow",
  "candle-core",
- "candle-metal-kernels",
  "candle-nn",
  "candle-transformers",
  "clap",
